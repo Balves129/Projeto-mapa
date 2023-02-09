@@ -13,92 +13,112 @@ a{
 a:hover{
     color: aquamarine;
 }
-.logo{
+/* 09-02-23 */
+.logo {
     font-size: 24px;
     text-transform: uppercase;
     letter-spacing: 4px;
-}
-/* usei o flex para colocar o logo 
-e a lista um do lado do outro */
-nav{
+  }
+  
+  nav {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    font-family: 'Inder';
-    background: rgb(35, 34, 36);
+    font-family: system-ui, -apple-system, Helvetica, Arial, sans-serif;
+    background: #23232e;
     height: 8vh;
-}
+  }
+  
+  main {
+    background: url("bg.jpg") no-repeat center center;
+    background-size: cover;
+    height: 92vh;
+  }
+  
+  .nav-list {
+    list-style: none;
+    display: flex;
+  }
+  
+  .nav-list li {
+    letter-spacing: 3px;
+    margin-left: 32px;
+  }
+  
+  .mobile-menu {
+    display: none;
+    cursor: pointer;
+  }
+  
+  .mobile-menu div {
+    width: 32px;
+    height: 2px;
+    background: #fff;
+    margin: 8px;
+    transition: 0.3s;
+  }
+  
+  @media (max-width: 999px) {
+    body {
+      overflow-x: hidden;
+    }
+    .nav-list {
+      position: absolute;
+      top: 8vh;
+      right: 0;
+      width: 50vw;
+      height: 92vh;
+      background: #23232e;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+      transform: translateX(100%);
+      transition: transform 0.3s ease-in;
+      z-index: 1 ;
+    }
+    .nav-list li {
+      margin-left: 0;
+      opacity: 0;
+    }
+    .mobile-menu {
+      display: block;
+    }
+  }
+  
+  .nav-list.active {
+    transform: translateX(0);
+  }
+  
+  @keyframes navLinkFade {
+    from {
+      opacity: 0;
+      transform: translateX(50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  .mobile-menu.active .line1 {
+    transform: rotate(-45deg) translate(-8px, 8px);
+  }
+  
+  .mobile-menu.active .line2 {
+    opacity: 0;
+  }
+  
+  .mobile-menu.active .line3 {
+    transform: rotate(45deg) translate(-5px, -7px);
+  }
+
 main{
     background: url(/img_fundo.jpg) no-repeat center center;
     background-size: cover;
     height: 92vh;
     filter: contrast(83%);
 }
-.nav-list{
-    list-style: none;
-    display: flex;
-}
-.nav-list li{
-    letter-spacing: 3px;
-    margin-left: 32px;
-}
-.nav-list li span{
-    color: #12c23a;
-    font-weight: 100;
-    font-size: 16px;
-}
-.mobile-menu {
-    cursor: pointer;
-    display: none;
-}
-.mobile-menu div{
-    width: 32px;
-    height: 2px;
-    background: #fff;
-    margin: 8px;
-}
-/* quando minha tela for menor que esse tamanho,
-a navegação irá para a parte lateral,
-ficando como uma coluna */
-@media (max-width:999px) {
-    body{
-        overflow: hidden;
-    }
-    .nav-list{
-        position: absolute;
-        top: 8vh;
-        right: 0;
-        width: 50vh;
-        height: 92vh;
-        background: rgb(11, 1, 29);
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-around;
-        transform: translateX(100%);
-        transition: transform 0.3s ease-in;
-    }
-    .nav-list li{
-        margin-left:0 ;
-        opacity: 0;
-    }
-    .mobile-menu{
-        display: block;
-    }
-    
-}
-.nav-list.active{
-    transform: translateX(0%);
-}
-@keyframes navLinkFade{
-    from{
-        opacity: 0;
-        transform: translateX(50px);
-    }
-    to{
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
+
 /* edição dos textos */
 .text{
     width: auto;
@@ -119,18 +139,19 @@ ficando como uma coluna */
     -webkit-text-fill-color: transparent;
 }
 main h2{
-    width: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    position: absolute;
+width: 64rem;
+height: 12rem;
+left: 17rem;
+top: 17.77rem;
 }
 /* edição numeros */
 .number{
+    border: #12c23a 2px solid;
     display: flex;
     margin-top: 7rem;
     color: #a1118e;
-    gap: 7rem;
+    gap: 10rem;
     cursor: pointer;
     transition: 0.5s;
     padding: 0rem 22rem;
@@ -167,14 +188,7 @@ main h2{
     margin-top: -9rem;
     z-index: 1;
 }
-/* .C-sobre h1{
-    color: aliceblue;
-    font-size: 150%;
-    padding: 2rem 2rem auto;
-    position:static;
 
-    margin-left: -34rem;
-} */
 .sobre{
     position: absolute;
 width: 18rem;
@@ -194,18 +208,50 @@ letter-spacing: 0.1rem;
 color: #6bc06f;
 
 }
-@media only screen and (max-width: 390px){
+section h5{
+    /* width: 37vw;
+    font-size: 26px;
+    color: #fff;
+    padding: 23px 7px;
+    margin-right: 44.19rem; */
+    position: absolute;
+    width: 18rem;
+    height: 12rem;
+    left: 66px;
+    top: 48.7rem;
+    
+    font-family:Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-size: 23px;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.1rem;
+    
+}
+@media only screen and (max-width: 1260px),(min-width:390px){
     .text p{
         font-size: 43px;
     }
     main h2{
         padding: 10px 50px;
-
     }
     .number{
         display: inline-flex;
-        gap: 23px;
-        padding: 10px;
+        gap: 6rem;
+        padding: 5px;
+        margin: 50px 50px;
+    }
+    section h5{
+        width: 37vw;
+        font-size: 22px;
+        color: #fff;
+        padding: 1px 7px;
+        margin-right: 40rem;
+        transition: 1s ease-in-out;
+    }
+    .sobre{
+        margin-top: -3rem;
+        transition: 1s ease-in-out;
     }
     
 }
